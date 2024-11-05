@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login OndaVerde</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="org">
+            <div class="logo">
+                <img src="" alt="">
+            </div><!--logo-->
+            <nav>
+               
+                <div class="bt">
+                    <a href="/acessarplataforma">
+                        <button>ACESSAR PLATAFORMA</button>
+                    </a>
+                </div><!--bt-->
+            </nav>
+        </div><!--org-->
+    </header>
+    <main>
+        <section class="login">
+            <div class="img">
+            </div>
+            <div class="text-login">
+                <h2>Faça seu login</h2>
+
+                <!-- flash messages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for message in messages %}
+                                <div class="alert alert-warning">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <!-- fim das flash messages -->
+
+                <form action="{{url_for('verificarlogin')}}" method="POST">
+                    <label for="usuario">Usuário</label>
+                    <input class="campo" type="text" id="usuario" name="usuario" required>
+        
+                    <label for="senha">Senha</label>
+                    <input class="campo" type="password" id="senha" name="senha" required>
+        
+                    <input class="bt-login" type="submit" value="Entrar">
+                </form>
+                <p>Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
