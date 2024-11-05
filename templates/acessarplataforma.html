@@ -16,9 +16,11 @@
                 <img src="" alt="">
             </div><!--logo-->
             <nav>
-               
+                <a href="{{ url_for('sobrenos') }}">SOBRE O PROJETO</a>
+                <a href="{{ url_for('adotar') }}">ADOTAR UMA MUDA</a>
+                <a href="{{ url_for('feedbacks') }}">FEEDBACKS</a>
                 <div class="bt">
-                    <a href="/acessarplataforma">
+                    <a href="{{ url_for('login') }}">
                         <button>ACESSAR PLATAFORMA</button>
                     </a>
                 </div><!--bt-->
@@ -46,7 +48,7 @@
                 {% endwith %}
                 <!-- fim das flash messages -->
 
-                <form action="{{url_for('verificarlogin')}}" method="POST">
+                <form action="{{ url_for('acessoverific') }}" method="POST">
                     <label for="usuario">Usuário</label>
                     <input class="campo" type="text" id="usuario" name="usuario" required>
         
@@ -55,7 +57,7 @@
         
                     <input class="bt-login" type="submit" value="Entrar">
                 </form>
-                <p>Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
+                <p>Ainda não tem uma conta? <a href="{{ url_for('cadastro') }}">Cadastre-se</a></p>
             </div>
         </section>
     </main>

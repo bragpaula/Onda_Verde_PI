@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro ONDAVERDE</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -16,13 +17,14 @@
                 <img src="" alt="">
             </div><!--logo-->
             <nav>
-                <a href="{{ url_for('sobrenos') }}">SOBRE O PROJETO</a>
-                <a href="{{ url_for('adotar') }}">ADOTAR UMA MUDA</a>
-                <a href="{{ url_for('feedbacks') }}">FEEDBACKS</a>
+                <a href="/sobrenos">SOBRE O PROJETO</a>
+                <a href="/adoteumamuda">ADOTAR UMA MUDA</a>
+                <a href="/feedbacks">FEEDBACKS</a>
                 <div class="bt">
-                    <a href="{{ url_for('login') }}">
+                    <a href="/acessarplataforma">
                         <button>ACESSAR PLATAFORMA</button>
                     </a>
+                    
                 </div><!--bt-->
             </nav>
         </div><!--org-->
@@ -33,32 +35,35 @@
                 <img src="" alt="">
             </div>
             <div class="text-cad">
-                <h2>Faça seu cadastro</h2>
-                <form action="{{ url_for('perfil') }}" method="POST">
+                <h2>
+                    Faça seu cadastro
+                </h2>
+                <form action="{{ url_for('cadastro_empresa') }}" method="POST">
+                    
                     <label for="tipo">Eu sou:</label>
                     <select class="campo tipo" id="tipo" name="tipo" required>
-                        <option value="cidadao">Cidadão</option>
+                        <option value="cidadão">Cidadão</option>
                         <option value="ong">ONG</option>
                         <option value="empresa">Empresa</option>
                     </select>
-                    
+        
                     <label for="nome">Nome</label>
                     <input class="campo nome" type="text" id="nome" name="nome" required>
 
-                    <label for="username">Usuário</label>
+                    <label for="nome">Usuário</label>
                     <input class="campo user" type="text" id="username" name="username" required>
-
+        
                     <label for="email">Email</label>
                     <input class="campo email" type="email" id="email" name="email" required>
-
+        
                     <label for="password">Senha</label>
                     <input class="campo senha" type="password" id="password" name="password" required>
-
+        
                     <label for="telefone">Telefone</label>
                     <input class="campo tel" type="tel" id="telefone" name="telefone" required>
 
-                    <label for="estado">Estado</label>
-                    <select class="campo estado" id="estado" name="estado" required>
+                    <label for="tipo">Estado</label>
+                    <select class="campo Estado" id="Estado" name="Estado" required>
                         <option value="RN">Rio Grande do Norte</option>
                         <option value="RS">Rio Grande Do Sul</option>
                         <option value="BA">Bahia</option>
@@ -66,10 +71,10 @@
                         <option value="SP">São Paulo</option>
                     </select>
 
-                    <label for="cidade">Cidade</label>
-                    <input class="campo cidade" type="text" id="cidade" name="cidade" required>
+                    <label for="telefone">Cidade</label>
+                    <input class="campo cidade" type="cidade" id="cidade" name="cidade" required>
 
-                    <label for="bairro">Bairro</label>
+                    <label for="tipo">Bairro</label>
                     <select class="campo bairro" id="bairro" name="bairro" required>
                         <option value="igapo">Igapó</option>
                         <option value="lagoa-azul">Lagoa Azul</option>
@@ -78,12 +83,12 @@
                         <option value="redinha">Redinha</option>
                     </select>
 
-                    <label for="rua">Rua</label>
-                    <input class="campo rua" type="text" id="rua" name="rua" required>
+                    <label for="telefone">Rua</label>
+                    <input class="campo rua" type="rua" id="rua" name="rua" required>
 
-                    <label for="numero">Número</label>
-                    <input class="campo numero" type="text" id="numero" name="numero" required>
-
+                    <label for="telefone">Numero</label>
+                    <input class="campo numero" type="numero" id="numero" name="numero" required>
+        
                     <input class="bt-cadastro" type="submit" value="Cadastrar">
                 </form>
             </div>
