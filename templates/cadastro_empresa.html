@@ -40,14 +40,6 @@
                     Faça seu cadastro
                 </h2>
                 <form action="{{ url_for('cadastro_empresa') }}" method="POST">
-                    
-                    <label for="tipo">Eu sou:</label>
-                    <select class="campo tipo" id="tipo" name="tipo" required>
-                        <option value="cidadão">Cidadão</option>
-                        <option value="ong">ONG</option>
-                        <option value="empresa">Empresa</option>
-                    </select>
-        
                     <label for="nome">Nome</label>
                     <input class="campo nome" type="text" id="nome" name="nome" required>
 
@@ -63,19 +55,7 @@
                     <label for="telefone">Telefone</label>
                     <input class="campo tel" type="tel" id="telefone" name="telefone" required>
 
-                    <label for="tipo">Estado</label>
-                    <select class="campo Estado" id="Estado" name="Estado" required>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande Do Sul</option>
-                        <option value="BA">Bahia</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="SP">São Paulo</option>
-                    </select>
-
-                    <label for="telefone">Cidade</label>
-                    <input class="campo cidade" type="cidade" id="cidade" name="cidade" required>
-
-                    <label for="tipo">Bairro</label>
+                    <label for="tipo">Endereço</label>
                     <select class="campo bairro" id="bairro" name="bairro" required>
                         <option value="igapo">Igapó</option>
                         <option value="lagoa-azul">Lagoa Azul</option>
@@ -83,12 +63,6 @@
                         <option value="potengi">Potengi</option>
                         <option value="redinha">Redinha</option>
                     </select>
-
-                    <label for="telefone">Rua</label>
-                    <input class="campo rua" type="rua" id="rua" name="rua" required>
-
-                    <label for="telefone">Numero</label>
-                    <input class="campo numero" type="numero" id="numero" name="numero" required>
         
                     <input class="bt-cadastro" type="submit" value="Cadastrar">
                 </form>

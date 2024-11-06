@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login OndaVerde</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="org">
-            <div class="logo">
-                <img src="" alt="">
-            </div><!--logo-->
-            <nav>
-                <a href="/">Voltar ao Site</a>
-                <a href="{{ url_for('sobrenos') }}">SOBRE O PROJETO</a>
-                <a href="{{ url_for('adotar') }}">ADOTAR UMA MUDA</a>
-                <a href="{{ url_for('feedbacks') }}">FEEDBACKS</a>
-                <div class="bt">
-                    <a href="{{ url_for('login') }}">
-                        <button>ACESSAR PLATAFORMA</button>
-                    </a>
-                </div><!--bt-->
-            </nav>
-        </div><!--org-->
-    </header>
-   <h1> Perfil do úsuario</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="perfil">
+        <h2>Perfil do Usuário</h2>
+        <p>Bem-vindo, {{ user.username }}!</p>
+    </section>
+{% endblock %}
