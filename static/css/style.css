@@ -185,3 +185,13 @@ h3{
     line-height: normal;
     width: 450px;
 }
+
+.btn-principal {
+    display: inline-block;
+    padding: 10px 20px; 
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+

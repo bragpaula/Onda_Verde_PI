@@ -22,6 +22,10 @@ def login():
             return redirect(url_for('login'))
     return render_template('acessarplataforma.html')
 
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
+
 # Rota para decidir o tipo de cadastro
 @app.route('/decidir_cadastro', methods=['GET', 'POST'])
 def decidir_cadastro():
