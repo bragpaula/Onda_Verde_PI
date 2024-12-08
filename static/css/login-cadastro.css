@@ -5,7 +5,8 @@ body{
     background-color: #FFF7CF;
 }
 header{
-    background-color: white;
+    background: #FFF;
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.25);
 
 }
 .link-header{
@@ -15,6 +16,7 @@ header{
 }
 .logo-header{
     margin: 0 auto;
+    padding-right: 120px;
 }
 h1{
     color: #02381E;
@@ -115,4 +117,41 @@ form{
     flex-direction: column;
     gap: 30px;
     align-items: center;
+}
+
+/* cadastro cidadão */
+
+figure{
+    width: 50vw;
+    background-image: url(../img/Group\ 10\ \(1\).png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+.main-cadastro{
+    display: flex;
+}
+.main-cadastro .form{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+}       
+.form h1{
+    width: 380px;
+    margin: 50px 0 30px 0;
+}
+#nome::placeholder, #telefone::placeholder, #cpf::placeholder, #data_nascimento::placeholder {
+    font-family: poppins;
+    padding-left: 5px;
+}
+.main-cadastro form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.btn-login{
+    margin-top: 20px;
 }

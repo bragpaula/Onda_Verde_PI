@@ -1,34 +1,72 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Pessoa Física</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/login-cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="body-login-cadastro">
+    <header class="header-login-cadastro">
+        <div class="org">
+            <a href="" class="link-header">
+                <img src="../static/img/seta-direita 1.png" alt="seta">
+                Voltar ao site
+            </a>
+            <img src="../static/img/2-removebg-preview 2.png" alt="logo Onda Verde" class="logo-header">
+        </div><!--flex-->
+    </header>
+    <main class="main-cadastro">
+       <figure>
 
-{% block content %}
-    <section class="cadastro">
-        <h2>Cadastro Cidadão</h2>
-        <form action="/cadastro_cidadao" method="POST">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+       </figure>
+       <div class="form">
+        <h1>
+            Junte-se a onda verde, faça seu cadastro!
+        </h1>
+        <form action="/login" method="POST">
+            <!-- campo para E-mail ou Usuário -->
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+            </div>
 
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="username" required>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="text" id="email" name="email" placeholder="Digite seu e-mail" required />
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <div class="form-group">
+              <label for="cpf">CPF:</label>
+              <input type="number" id="cpf" name="cpf" placeholder="Digite seu CPF" required />
+            </div>
 
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="form-group">
+              <label for="data_nascimento">Data de Nascimento:</label>
+              <input type="date" id="data_nascimento" name="data_nascimento" required />
+            </div>
 
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" required>
-
-            <label for="endereco">Endereço:</label>
-            <select id="endereco" name="endereco" required>
-                <option value="igapo">Igapó</option>
-                <option value="lagoa-azul">Lagoa Azul</option>
-                <option value="pajucara">Pajuçara</option>
-                <option value="potengi">Potengi</option>
-                <option value="redinha">Redinha</option>
-            </select>
-
-            <input type="submit" value="Cadastrar">
-        </form>
-    </section>
-{% endblock %}
+            <div class="form-group">
+              <label for="telefone">Telefone:</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required />
+            </div>
+            
+            <!-- campo para Senha -->
+            <div class="form-group">
+              <label for="senha">Senha:</label>
+              <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+            </div>
+            
+            <!-- botão para Fazer Login -->
+            <div class="form-group">
+              <button type="submit" class="btn-login">FAZER CADASTRO</button>
+            </div>
+          </form>
+       </div>
+    </main>
+</body>
+</html>
