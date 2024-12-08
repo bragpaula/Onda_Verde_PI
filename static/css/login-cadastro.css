@@ -1,0 +1,118 @@
+
+/*login*/
+
+body{
+    background-color: #FFF7CF;
+}
+header{
+    background-color: white;
+
+}
+.link-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-header{
+    margin: 0 auto;
+}
+h1{
+    color: #02381E;
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px; /* 125% */
+    margin: 50px 0;
+}
+.text-h1{
+    display: flex;
+    justify-content: center;
+}
+.flex{
+    width: 1100px;
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+h2{
+    color: #02381E;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+p{
+    color: #5F615B;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: justify;
+    margin-bottom: 12px;
+}
+span{
+    font-weight: 600;
+}
+.text-container a{
+    color: #487305;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    text-transform: uppercase;  
+}
+.text-container .textinho{
+    width: 380px;
+}
+.main-login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 550px;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    border-left: #5F615B 2px solid;
+    justify-content: center;
+    align-items: center;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+input{
+    width: 380px;
+    height: 44px;
+    border-radius: 4px;
+    border: 1px solid #435B1D;
+    background: #FFFCEC;
+}
+#email::placeholder, #senha::placeholder {
+    font-family: poppins;
+    padding-left: 5px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
