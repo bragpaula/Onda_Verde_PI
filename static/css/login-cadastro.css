@@ -141,7 +141,7 @@ figure{
     width: 380px;
     margin: 50px 0 30px 0;
 }
-#nome::placeholder, #telefone::placeholder, #cpf::placeholder, #data_nascimento::placeholder {
+#nome::placeholder, #telefone::placeholder, #cpf::placeholder, #data_nascimento::placeholder, #cnpj::placeholder, #nome-org::placeholder, #area-atu::placeholder, #telefone-org::placeholder, #email-org::placeholder {
     font-family: poppins;
     padding-left: 5px;
 }
