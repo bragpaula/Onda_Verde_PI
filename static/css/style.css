@@ -51,6 +51,7 @@ button{
     font-weight: 600;
     line-height: 18px; /* 128.571% */
     border: none;
+    cursor: pointer;
 }
 header a:hover{
     color: #00140a;
