@@ -13,9 +13,9 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        usuario = request.form['usuario']
+        email = request.form['email']
         senha = request.form['senha']
-        if usuario == 'Paula' and senha == 'Onda1234':
+        if email == 'paula@example.com' and senha == 'Onda1234':
             return redirect(url_for('dashboard'))
         else:
             flash('Login ou senha inválidos')
@@ -53,14 +53,14 @@ def cadastro_juridica():
     return render_template('cadastro_juridica.html')
 
 # Rota para o perfil do usuário
-@app.route('/perfil')
-def perfil():
+@app.route('/dashboard')
+def dashboard():
     user = {
         'username': 'Paula',
         'email': 'paula@example.com',
         'telefone': '123456789'
     }
-    return render_template('perfil.html', user=user)
+    return render_template('dashboard.html', user=user)
 
 # Rota sobre o projeto
 @app.route('/sobrenos')
