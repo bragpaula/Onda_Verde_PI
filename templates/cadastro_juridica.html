@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Pessoa Física</title>
+    <title>Cadastro - Pessoa Jurídica</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/login-cadastro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 <body class="body-login-cadastro">
     <header class="header-login-cadastro">
         <div class="org">
-            <a href="" class="link-header">
+            <a href="/" class="link-header">
                 <img src="../static/img/seta-direita 1.png" alt="seta">
                 Voltar ao site
             </a>
@@ -22,37 +22,36 @@
     </header>
     <main class="main-cadastro">
        <figure>
-
        </figure>
        <div class="form">
         <h1>
             Junte-se a onda verde, faça seu cadastro!
         </h1>
-        <form action="/login" method="POST">
-            <!-- campo para E-mail ou Usuário -->
+        <form action="/cadastro_juridica" method="POST"> <!-- Alterado para a rota de cadastro -->
+            <!-- campo para Nome da Organização -->
             <div class="form-group">
-              <label for="nome">Nome:</label>
-              <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
+              <label for="nome-org">Nome da sua organização:</label>
+              <input type="text" id="nome-org" name="nome-org" placeholder="Digite o nome da sua organização" required />
             </div>
 
             <div class="form-group">
-              <label for="email">E-mail:</label>
-              <input type="text" id="email" name="email" placeholder="Digite seu e-mail" required />
+              <label for="email-org">E-mail:</label>
+              <input type="text" id="email-org" name="email-org" placeholder="Digite o e-mail da sua organização" required />
             </div>
 
             <div class="form-group">
-              <label for="cpf">CPF:</label>
-              <input type="number" id="cpf" name="cpf" placeholder="Digite seu CPF" required />
+              <label for="cnpj">CNPJ:</label>
+              <input type="number" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required />
             </div>
 
             <div class="form-group">
-              <label for="data_nascimento">Data de Nascimento:</label>
-              <input type="date" id="data_nascimento" name="data_nascimento" required />
+              <label for="area-atu">Área de Atuação:</label>
+              <input type="text" id="area-atu" name="area-atu" placeholder="Digite a área de atuação da sua organização" required />
             </div>
 
             <div class="form-group">
               <label for="telefone">Telefone:</label>
-              <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required />
+              <input type="tel" id="telefone-org" name="telefone" placeholder="Digite o telefone da sua organização" required />
             </div>
             
             <!-- campo para Senha -->
@@ -61,7 +60,7 @@
               <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
             </div>
             
-            <!-- botão para Fazer Login -->
+            <!-- botão para Fazer Cadastro -->
             <div class="form-group">
               <button type="submit" class="btn-login">FAZER CADASTRO</button>
             </div>

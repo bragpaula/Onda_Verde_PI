@@ -13,7 +13,7 @@
 <body class="body-login-cadastro">
     <header class="header-login-cadastro">
         <div class="org">
-            <a href="" class="link-header">
+            <a href="/" class="link-header">
                 <img src="../static/img/seta-direita 1.png" alt="seta">
                 Voltar ao site
             </a>
@@ -34,13 +34,15 @@
                         <p>
                             <span>Pessoa Física:</span>  Crie seu perfil pessoal para adotar áreas verdes, participar de atividades comunitárias e contribuir para um planeta mais sustentável.
                         </p>
-                        <a href="#">cadastre-se</a>
+                        <!-- Link de cadastro para pessoa física -->
+                        <a href="{{ url_for('cadastro_fisica') }}">Cadastre-se</a>
                     </div><!--textinho-->
                     <div class="textinho">
                         <p>
-                        <span>Pessoa Jurídica:</span>  Sua organização deseja apoiar iniciativas ambientais ou colaborar com projetos de impacto verde? Cadastre-se e conecte-se com ONGs e voluntários comprometidos.
+                            <span>Pessoa Jurídica:</span>  Sua organização deseja apoiar iniciativas ambientais ou colaborar com projetos de impacto verde? Cadastre-se e conecte-se com ONGs e voluntários comprometidos.
                         </p>
-                        <a href="#">cadastre sua organização</a>
+                        <!-- Link de cadastro para pessoa jurídica -->
+                        <a href="{{ url_for('cadastro_juridica') }}">Cadastre sua organização</a>
                     </div><!--textinho-->
                 </div><!--text-container-->
                 <div class="form">

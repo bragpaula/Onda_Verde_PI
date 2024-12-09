@@ -22,69 +22,39 @@ def login():
             return redirect(url_for('login'))
     return render_template('acessarplataforma.html')
 
-@app.route('/cadastro')
-def cadastro():
-    return render_template('cadastro.html')
-
-# Rota para decidir o tipo de cadastro
-@app.route('/decidir_cadastro', methods=['GET', 'POST'])
-def decidir_cadastro():
-    if request.method == 'POST':
-        tipo = request.form.get('tipo')
-        if tipo == 'cidadao':
-            return redirect(url_for('cadastro_cidadao'))
-        elif tipo == 'ong':
-            return redirect(url_for('cadastro_ong'))
-        elif tipo == 'empresa':
-            return redirect(url_for('cadastro_empresa'))
-    return render_template('decidir_cadastro.html')
-
-# Rota para cadastro de cidadão
-@app.route('/cadastro_cidadao', methods=['GET', 'POST'])
-def cadastro_cidadao():
+# Rota para cadastro de pessoa física
+@app.route('/cadastro_fisica', methods=['GET', 'POST'])
+def cadastro_fisica():
     if request.method == 'POST':
         nome = request.form['nome']
-        username = request.form['username']
         email = request.form['email']
-        password = request.form['password']
+        cpf = request.form['cpf']
+        data_nascimento = request.form['data_nascimento']
+        telefone = request.form['telefone']
+        senha = request.form['senha']
+
+        return redirect(url_for('login'))
+    
+    return render_template('cadastro_fisica.html')
+
+# Rota para cadastro de pessoa jurídica (ONG, Empresa, etc)
+@app.route('/cadastro_juridica', methods=['GET', 'POST'])
+def cadastro_juridica():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        cnpj = request.form['cnpj']
         telefone = request.form['telefone']
         endereco = request.form['endereco']
+        senha = request.form['senha']
 
         return redirect(url_for('login'))
-    return render_template('cadastro_cidadao.html')
-
-# Rota para cadastro de ONG
-@app.route('/cadastro_ong', methods=['GET', 'POST'])
-def cadastro_ong():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        telefone = request.form['telefone']
-        endereco = request.form['endereco']
-
-        return redirect(url_for('login'))
-    return render_template('cadastro_ong.html')
-
-# Rota para cadastro de empresa
-@app.route('/cadastro_empresa', methods=['GET', 'POST'])
-def cadastro_empresa():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        telefone = request.form['telefone']
-        bairro= request.form['bairro']
-
-        return redirect(url_for('login'))
-    return render_template('cadastro_empresa.html')
+    
+    return render_template('cadastro_juridica.html')
 
 # Rota para o perfil do usuário
 @app.route('/perfil')
 def perfil():
-
     user = {
         'username': 'Paula',
         'email': 'paula@example.com',
@@ -106,7 +76,6 @@ def feedbacks():
 @app.route('/adoteumamuda')
 def adotar():
     return render_template('adoteumamuda.html')  
-
 
 # Rota para o formulário de login (verificação)
 @app.route('/verificarlogin', methods=['POST'])
