@@ -10,17 +10,17 @@ def index():
     return render_template('index.html')
 
 # Rota para acessar a plataforma (login)
-@app.route('/acessarplataforma', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         usuario = request.form['usuario']
         senha = request.form['senha']
         if usuario == 'Paula' and senha == 'Onda1234':
-            return redirect(url_for('perfil'))
+            return redirect(url_for('dashboard'))
         else:
             flash('Login ou senha inválidos')
             return redirect(url_for('login'))
-    return render_template('acessarplataforma.html')
+    return render_template('login.html')
 
 # Rota para cadastro de pessoa física
 @app.route('/cadastro_fisica', methods=['GET', 'POST'])
