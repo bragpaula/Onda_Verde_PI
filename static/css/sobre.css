@@ -1,0 +1,142 @@
+/*header (igual login) */
+
+header{
+    background: #FFF;
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.25);
+}
+.link-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-header{
+    margin: 0 auto;
+    padding-right: 120px;
+}
+
+/* organização das sections */
+
+main{
+    width: 99vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section{
+    width: 1100px;
+    padding: 188px 0;
+}
+
+
+.text-sobre h2{
+    color: #02381E;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 50px; /* 104.167% */
+    width: 452px;
+    text-align: left;
+}
+.text-sobre p{
+    color: #02381E;
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 300;
+}
+.text-sobre p span{
+    font-weight: bold;
+}
+.text-sobre{
+    display: flex;
+    width: 452px;
+    height: 358px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.justificativa{
+    width: 99vw;
+    background: #02381E; 
+    display: flex;
+    justify-content: center;
+}
+.justificativa .text-sobre h2{
+    color: #FFF7CF;  
+}
+.justificativa .text-sobre p{
+    color: #FFF7CF;  
+}
+.justificativa .org{
+    width: 1100px;
+}
+
+/* section.objetivo */
+
+.objetivo h2{
+    color: #02381E;
+    width: 1000px;
+    margin-bottom: 70px;
+}
+.objetivo h3{
+    color: #02381E;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    width: 352px;
+    padding-top: 56px;
+ 
+}
+.objetivo p, .objetivo li{
+    color: #435B1D;
+    font-size: 24px;
+    font-weight: 400;
+    width: 352px;
+}
+.objetivo .card{
+    width: 480px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.objetivo ul{
+    list-style-position: inside;
+}
+.objetivo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* adoção de mudas */
+
+.galery img{
+    width: 240px;
+    height: 240px;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+.galeria{
+    width: 99vw;
+    background: #FFF7CF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.galeria h2{
+    color: #02381E;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+.linha{
+    display: flex;
+    gap: 26px;
+}
+.galery{
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
