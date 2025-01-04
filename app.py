@@ -63,9 +63,9 @@ def dashboard():
     return render_template('dashboard.html', user=user)
 
 # Rota sobre o projeto
-@app.route('/sobrenos')
-def sobrenos():
-    return render_template('sobrenos.html')
+@app.route('/sobre')
+def sobre():
+    return render_template('sobre.html')
 
 # Rota para a página de feedbacks
 @app.route('/feedbacks')
@@ -73,9 +73,9 @@ def feedbacks():
     return render_template('feedbacks.html')
 
 # Rota para a página de adotar uma muda
-@app.route('/adoteumamuda')
+@app.route('/adocao')
 def adotar():
-    return render_template('adoteumamuda.html')  
+    return render_template('adocao.html')  
 
 # Rota para o formulário de login (verificação)
 @app.route('/verificarlogin', methods=['POST'])
