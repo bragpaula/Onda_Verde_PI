@@ -1,33 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>feedbacks</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Feedbacks</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/sobre.css">
+    <link rel="stylesheet" href="../static/css/feedbacks.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="header-login-cadastro">
         <div class="org">
-            <div class="logo">
-                <img src="" alt="">
-            </div><!--logo-->
-            <nav>
-                <a href="/">Voltar ao Site</a>
-                <a href="{{ url_for('sobre') }}">SOBRE O PROJETO</a>
-                <a href="{{ url_for('adotar') }}">ADOTAR UMA MUDA</a>
-                <a href="{{ url_for('feedbacks') }}">FEEDBACKS</a>
-                <div class="bt">
-                    <a href="{{ url_for('login') }}">
-                        <button>ACESSAR PLATAFORMA</button>
-                    </a>
-                </div><!--bt-->
-            </nav>
-        </div><!--org-->
+            <a href="" class="link-header">
+                <img src="../static/img/seta-direita 1.png" alt="seta">
+                Voltar ao site
+            </a>
+            <img src="../static/img/2-removebg-preview 2.png" alt="logo Onda Verde" class="logo-header">
+        </div><!--flex-->
     </header>
-    <h1>Feedbacks</h1>
+    <main>
+        <section class="feedbacks">
+            <h2>O que quem já entrou na Onda Verde está achando?</h2>
+            <div class="cards-feed">
+                <div class="coluna">
+                    <div class="card-feed">
+                        <img src="../static/img/Sem título.png" alt="">
+                        <div class="textcard">
+                            <h3>Joana Silva</h3>
+                            <p>
+                                Esses dias participei do meu primeiro plantio de árvores e ameiii 😍😍 todos muito queridos me senti super acolhida!!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-feed">
+                        <img src="../static/img/Sem título (1).png" alt="">
+                        <div class="textcard">
+                            <h3>Lucas Martins</h3>
+                            <p>
+                                Esses dias participei do meu primeiro plantio de árvores e ameiii 😍😍 todos muito queridos me senti super acolhida!!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-feed">
+                        <img src="../static/img/images.png" alt="">
+                        <div class="textcard">
+                            <h3>Guilherme Vasconcelos</h3>
+                            <p>
+                                Esses dias participei do meu primeiro plantio de árvores e ameiii 😍😍 todos muito queridos me senti super acolhida!!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="coluna">
+                    <div class="card-feed">
+                        <img src="../static/img/Sem título (2).png" alt="">
+                        <div class="textcard">
+                            <h3>Luana Castelo</h3>
+                            <p>
+                                Esses dias participei do meu primeiro plantio de árvores e ameiii 😍😍 todos muito queridos me senti super acolhida!!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-feed">
+                        <img src="../static/img/images (1).png" alt="">
+                        <div class="textcard">
+                            <h3>Pedro Nogueira</h3>
+                            <p>
+                                Esses dias participei do meu primeiro plantio de árvores e ameiii 😍😍 todos muito queridos me senti super acolhida!!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-feed">
+                        <img src="../static/img/images (2).png" alt="">
+                        <div class="textcard">
+                            <h3>Karla Pereira</h3>
+                            <p>
+                                Esses dias participei do meu primeiro plantio de árvores e ameiii 😍😍 todos muito queridos me senti super acolhida!!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="footer">
+            <h2>Faça seu cadastro gratuitamente e torne-se parte da transformação!</h2>
+            <a href="" class="btn">Cadastre-se</a>
+        </section>
+    </main>
 </body>
 </html>
