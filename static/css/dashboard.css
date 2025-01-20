@@ -1,0 +1,353 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #FFF7CF;
+    font-family: Poppins;
+    display: flex; 
+}
+.org-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.org-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+main{
+    display: flex;
+    justify-content: center;
+    width: 82vw;
+}
+main .container{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.menu a:hover{
+    color: #02381E;
+}
+.btn:hover{
+    box-shadow: 0px 0px 8px #435B1D;
+    transition-duration: 2s;
+}
+
+/* estilização sidebar*/
+
+.sidebar{
+    width: 18vw;
+    height: 100vh;
+    background: #FFF;
+    box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar .logo{
+    margin: 40px 0;
+}
+.menu p{
+    color: #BFBFBF;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px; /* 128.571% */
+    letter-spacing: 0.28px;
+    text-transform: uppercase;
+}
+.sidebar nav{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sidebar nav a{
+    color: #5F5F5F;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 18px; /* 138.462% */
+    letter-spacing: 0.26px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sidebar .geral{
+    position: absolute;
+    bottom: 60px;
+}
+.sidebar .sair{
+    color: #FC3131;
+}
+.sidebar .clicado{
+    color: #02381E;
+    font-weight: 600;
+}
+
+/* estilização banner */
+
+.banner{
+    width: 880px;
+    height: 285px;
+    border-radius: 20px;
+    background: linear-gradient(270deg, #435B1D -5.32%, #02381E 106.33%);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.banner h1{
+    color: #FFF;
+    font-size: 36px;
+    font-weight: 500;
+    width: 608px;
+}
+.banner h3{
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.banner a{
+    border-radius: 50px;
+    background: #FFF7CF; 
+    width: 221px;
+    height: 42px;
+    color: #02381E;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 8px;
+}
+.banner a img{
+    border-radius: 100px;
+    background: #02381E;
+    padding: 8px;
+    margin-left: 5px;
+}
+.banner .texto-banner{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-left: 28px;
+}
+.arvores{
+    position: absolute;
+    bottom: -6px;
+    right: 28px;
+}
+
+/* icones superiores */
+
+.icones-sup{
+    gap: 8px;
+}
+.icones-sup .lupa, .icones-sup .sino{
+    border-radius:100px;
+    padding: 13px;
+    background: #E8DFB3;
+    width: 50px;
+    height: 50px;
+}
+.icones-sup .perfil{
+    width: 171px;
+    height: 50px;
+    border-radius: 16px;
+    background: #E8DFB3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+.icones-sup .perfil img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+}
+.icones-sup .perfil h3{
+    color: #02381E;
+    font-size: 12px;
+    font-weight: 600;
+}
+.icones-sup .perfil p{
+    color: #5F5F5F;
+    font-size: 10px;
+    font-weight: 300;
+}
+
+/* minhas areas */
+
+.minhas-areas{
+    width: 287px;
+    height: 220px;
+    border-radius: 20px;
+    background: #E8DFB3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.minhas-areas h2{
+    color: #02381E;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+.card-minhas-areas{
+    width: 264px;
+    height: 43px;
+    border-radius: 10px;
+    background: #FFF7CF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.card-minhas-areas h3{
+    color: #000;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+}
+.card-minhas-areas p{
+    color: #383838;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 300;
+}
+.card-minhas-areas a{
+    color: #FFF;
+    font-size: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    background: #487305;  
+    width: 80px;
+    height: 17px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* areas verdes */
+
+.areas-verdes h2{
+    color: #02381E;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cards-areas-verdes{
+    display: flex;
+    justify-content: space-between;
+}
+.card-area-verde{
+    width: 380px;
+    height: 100px;
+    border-radius: 20px;
+    background: #E8DFB3;
+    display: flex;
+    align-items: center;
+}
+.card-area-verde img{
+    margin-left: 8px;
+}
+.card-area-verde h3{
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+}
+.card-area-verde p{
+    color: #383838;
+    font-size: 10px;
+    font-weight: 300;
+}
+.card-area-verde a{
+    width: 80px;
+    height: 17px;
+    border-radius: 10px;
+    background: #02381E;
+    color: #FFF;
+    font-size: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.botoes-areas-verdes{
+    display: flex;
+    gap: 8px;
+}
+.org-areas-verdes{
+    margin-left: 20px;
+    gap: 14px;
+}
+
+/* estilização perto */
+.perto h2{
+    color: #02381E;
+    font-size: 20px;
+    font-weight: 500;
+}
+.perto{
+    width: 580px;
+}
+
+/* estilização próximas atividades */
+
+.proximas-atv h2{
+    color: #02381E;
+    font-size: 20px;
+    font-weight: 500;
+}
+.proximas-atv .grupo-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+.card-prox{
+    width: 619px;
+    height: 150px;
+    border-radius: 20px;
+    background: #E8DFB3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.card-prox h3{
+    color: #383838;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.card-prox p{
+    color: #383838;
+    font-size: 11px;
+    font-weight: 300;
+    width: 216px;
+    text-align: justify;
+}
+.card-prox a{
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    background: #02381E;
+    color: #FFF7CF;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
