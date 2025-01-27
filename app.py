@@ -1,8 +1,19 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, redirect, url_for, request, flash 
+from database import db
+from flask_migrate import Migrate
 import os
 
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', 'projetoI')  
+
+db.init_app(app)
+conexao= "sqllite:///bancoprojeto.sqlite"
+
+app.config['SECRET_KEY'] = 'projeto.I'
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
+
+
+migrate = Migrate(app, db)
 
 # Rota para a página inicial (home)
 @app.route('/')
