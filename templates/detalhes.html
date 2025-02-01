@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Detalhes da Área {{ id_area }}</h2>
+<p>Informações sobre a área...</p>
+<a href="{{ url_for('adotar_area', id_area=id_area) }}">Adotar</a>
+{% endblock %}

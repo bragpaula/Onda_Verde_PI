@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Notificações</h2>
+<ul>
+    {% for notificacao in notificacoes %}
+        <li>{{ notificacao }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

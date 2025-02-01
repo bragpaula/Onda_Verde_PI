@@ -1,19 +1,10 @@
-from flask import Flask, render_template, redirect, url_for, request, flash 
-from database import db
-from flask_migrate import Migrate
+from flask import Flask, render_template, redirect, url_for, request, flash, session
 import os
 
 app = Flask(__name__)
 
-db.init_app(app)
-conexao= "sqllite:///bancoprojeto.sqlite"
-
 app.config['SECRET_KEY'] = 'projeto.I'
-app.config['SQLALCHEMY_DATABASE_URI'] = conexao
-app.config['SQLALCHEMY_TRACKMODIFICATIONS'] = False
 
-
-migrate = Migrate(app, db)
 
 # Rota para a página inicial (home)
 @app.route('/')
@@ -27,7 +18,7 @@ def login():
         email = request.form['email']
         senha = request.form['senha']
         if email == 'paula@example.com' and senha == 'Onda1234':
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('dashboard')) 
         else:
             flash('Login ou senha inválidos')
             return redirect(url_for('login'))
@@ -73,6 +64,51 @@ def dashboard():
     }
     return render_template('dashboard.html', user=user)
 
+# Rota para detalhes de uma área
+@app.route('/detalhes/<int:id_area>')
+def detalhes_area(id_area):
+    return render_template('detalhes.html', id_area=id_area)
+
+# Rota para adotar uma área
+@app.route('/adotar/<int:id_area>')
+def adotar_area(id_area):
+    flash(f'Você adotou a área {id_area} com sucesso!')
+    return redirect(url_for('dashboard'))  
+
+# Rota para participar de uma atividade
+@app.route('/participar/<int:id_atividade>')
+def participar_atividade(id_atividade):
+    return redirect(url_for('dashboard'))  
+
+# Rota para visualizar uma área adotada
+@app.route('/visualizar/<int:id_area>')
+def visualizar_area(id_area):
+    return render_template('visualizar.html', id_area=id_area)
+
+# Rota para buscar áreas e atividades
+@app.route('/buscar')
+def buscar():
+    query = request.args.get('q', '')
+    resultados = ["Praça Dom Casmurro", "Canteiro Central", "Bosque Esperança"]
+    return render_template('resultados.html', query=query, resultados=resultados)
+
+# Rota para exibir notificações
+@app.route('/notificacoes')
+def notificacoes():
+    notificacoes = [
+        "Nova área disponível para adoção!",
+        "Evento de plantio amanhã as 15h no IFRN-zona Norte.",
+        "Você foi aceito em uma nova atividade!"
+    ]
+
+    return render_template('notificacoes.html', notificacoes=notificacoes)
+
+# Rota para logout do usuário
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))  
+
 # Rota sobre o projeto
 @app.route('/sobre')
 def sobre():
@@ -94,7 +130,7 @@ def verificarlogin():
     usuario = request.form['usuario']
     senha = request.form['senha']
     if usuario == 'Paula' and senha == 'Onda1234':
-        return redirect(url_for('perfil'))
+        return redirect(url_for('dashboard')) 
     else:
         flash('Login ou senha inválidos')
         return redirect(url_for('login'))
