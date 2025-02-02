@@ -180,6 +180,10 @@ def notificacoes():
 def sobre():
     return render_template('sobre.html')
 
+@app.route('/adocao')
+def adocao():
+    return render_template('adocao.html')
+
 # Rota para a página de feedbacks
 @app.route('/feedbacks')
 def feedbacks():
