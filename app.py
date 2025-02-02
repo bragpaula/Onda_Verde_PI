@@ -1,146 +1,44 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import sqlite3
-from werkzeug.security import generate_password_hash, check_password_hash
+from database import conectar_bd, criar_tabelas, inserir_pessoa, buscar_usuario_por_email, buscar_org_por_email, buscar_atividades, buscar_areas, buscar_areas_do_usuario
+from werkzeug.security import check_password_hash
 
 app = Flask(__name__)
 app.secret_key = 'ondaverde_chave'
 
-def conectar_bd():
-    conn = sqlite3.connect('usuarios.db')
-    conn.row_factory = sqlite3.Row  # otimização - buscando por nome de coluna
-    return conn
-
-def criar_tabela_pessoa():
-    conn = conectar_bd()
-    cursor = conn.cursor()
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS pessoa (
-        cpf INTEGER PRIMARY KEY,
-        nome TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        data_nasc DATE NOT NULL,
-        telefone TEXT NOT NULL,
-        senha TEXT NOT NULL,
-        tipo TEXT NOT NULL DEFAULT 'pessoa'
-    )
-    ''')
-    conn.commit()
-    conn.close()
-
-criar_tabela_pessoa()
-
-def criar_tabela_org():
-    conn = conectar_bd()
-    cursor = conn.cursor()
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS org (
-        cnpj INTEGER PRIMARY KEY,
-        nomef TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        area_atuacao TEXT NOT NULL,
-        telefone TEXT NOT NULL,
-        senha TEXT NOT NULL,
-        tipo TEXT NOT NULL DEFAULT 'org'
-    )
-    ''')
-    conn.commit()
-    conn.close()
-
-criar_tabela_org()
-
+criar_tabelas()
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Rota para acessar a plataforma (login)
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
 
-        conn = conectar_bd()
-        cursor = conn.cursor()
-
-        # Verificação de pessoa física
-        cursor.execute('SELECT * FROM pessoa WHERE email = ?', (email,))
-        pessoa = cursor.fetchone()
-
+        # buscando em pessoas
+        pessoa = buscar_usuario_por_email(email)
         if pessoa and check_password_hash(pessoa['senha'], senha):
             session['usuario'] = pessoa['nome']
             session['tipo'] = 'pessoa'
+            session['usuario_id'] = pessoa['cpf']  # armazenando o ID do usuário
             flash('Login realizado com sucesso!', 'success')
             return redirect(url_for('dashboard'))
 
-        # Procurando na tabela org
-        cursor.execute('SELECT * FROM org WHERE email = ?', (email,))
-        org = cursor.fetchone()
-
-        conn.close()
-
+        # buscando em organizações
+        org = buscar_org_por_email(email)
         if org and check_password_hash(org['senha'], senha):
             session['usuario'] = org['nomef']
-            session['tipo'] = 'org' 
+            session['tipo'] = 'org'
+            session['usuario_id'] = org['cnpj']  # armazenando o ID da organização
             flash('Login realizado com sucesso!', 'success')
             return redirect(url_for('dashboard'))
 
-        # Se não encontrou em nenhuma das tabelas
         flash('Erro no login! Verifique suas credenciais.', 'danger')
         return redirect(url_for('login'))
 
     return render_template('login.html')
-
-
-# Rota para cadastro de pessoa física
-@app.route('/cadastro_fisica', methods=['GET', 'POST'])
-def cadastro_fisica():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        cpf = request.form['cpf']
-        data_nascimento = request.form['data_nascimento']
-        telefone = request.form['telefone']
-        senha = generate_password_hash(request.form['senha'])
-
-        conn = conectar_bd()
-        cursor = conn.cursor()
-        cursor.execute('''
-            INSERT INTO pessoa (cpf, nome, email, data_nasc, telefone, senha, tipo)
-            VALUES (?, ?, ?, ?, ?, ?, 'pessoa')
-        ''', (cpf, nome, email, data_nascimento, telefone, senha))
-        conn.commit()
-        conn.close()
-
-        flash('Cadastro realizado com sucesso!', 'success')
-        return redirect(url_for('login'))
-    
-    return render_template('cadastro_fisica.html')
-
-# Rota para cadastro de pessoa jurídica (ONG, Empresa, etc)
-@app.route('/cadastro_juridica', methods=['GET', 'POST'])
-def cadastro_juridica():
-    if request.method == 'POST':
-        nomef = request.form['nome']
-        email = request.form['email']
-        cnpj = request.form['cnpj']
-        area_atuacao = request.form['area_atuacao']
-        telefone = request.form['telefone']
-        senha = generate_password_hash(request.form['senha'])
-
-        conn = conectar_bd()
-        cursor = conn.cursor()
-        cursor.execute('''
-            INSERT INTO org (cnpj, nomef, email, area_atuacao, telefone, senha, tipo)
-            VALUES (?, ?, ?, ?, ?, ?, 'org')
-        ''', (cnpj, nomef, email, area_atuacao, telefone, senha))
-        conn.commit()
-        conn.close()
-
-        flash('Cadastro realizado com sucesso!', 'success')
-        return redirect(url_for('login'))
-    
-    return render_template('cadastro_juridica.html')
 
 @app.route('/dashboard')
 def dashboard():
@@ -148,23 +46,40 @@ def dashboard():
         flash('Por favor, faça login para acessar o dashboard.', 'danger')
         return redirect(url_for('login'))
     
-    return render_template('dashboard.html')
+    atividades = buscar_atividades()
+    areas = buscar_areas()
+    minhas_areas = buscar_areas_do_usuario(session.get('usuario_id')) # necessário armazenar o id do usuario na session
+    return render_template('dashboard.html', atividades=atividades, areas=areas, minhas_areas=minhas_areas)
+
+
 
 # Rota para detalhes de uma área
 @app.route('/detalhes/<int:id_area>')
 def detalhes_area(id_area):
     return render_template('detalhes.html', id_area=id_area)
 
-# Rota para adotar uma área
+# Rota para a página de adotar uma area
 @app.route('/adotar/<int:id_area>')
 def adotar_area(id_area):
-    flash(f'Você adotou a área {id_area} com sucesso!')
-    return redirect(url_for('dashboard'))  
+    if 'usuario_id' not in session:
+        flash('Por favor, faça login para adotar uma área.', 'danger')
+        return redirect(url_for('login'))
+    
+    usuario_id = session['usuario_id']
+    adotar_area(usuario_id, id_area)  # Função do database.py
+    flash(f'Você adotou a área {id_area} com sucesso!', 'success')
+    return redirect(url_for('dashboard'))
 
 # Rota para participar de uma atividade
-@app.route('/participar/<int:id_atividade>')
-def participar_atividade(id_atividade):
-    return redirect(url_for('dashboard'))  
+def participar_atividade(usuario_id, atividade_id):
+    conn = conectar_bd()
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO usuario_atividades (usuario_id, atividade_id)
+        VALUES (?, ?)
+    ''', (usuario_id, atividade_id))
+    conn.commit()
+    conn.close() 
 
 # Rota para visualizar uma área adotada
 @app.route('/visualizar/<int:id_area>')
@@ -190,6 +105,7 @@ def notificacoes():
     return render_template('notificacoes.html', notificacoes=notificacoes)
 
 
+
 # Rota sobre o projeto
 @app.route('/sobre')
 def sobre():
@@ -200,10 +116,7 @@ def sobre():
 def feedbacks():
     return render_template('feedbacks.html')
 
-# Rota para a página de adotar uma muda
-@app.route('/adocao')
-def adotar():
-    return render_template('adocao.html')  
+
 
 # Rota para logout do usuário
 @app.route('/logout')
