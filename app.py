@@ -1,12 +1,54 @@
-from flask import Flask, render_template, redirect, url_for, request, flash, session
-import os
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'ondaverde_chave'
 
-app.config['SECRET_KEY'] = 'projeto.I'
+def conectar_bd():
+    conn = sqlite3.connect('usuarios.db')
+    conn.row_factory = sqlite3.Row  # otimização - buscando por nome de coluna
+    return conn
+
+def criar_tabela_pessoa():
+    conn = conectar_bd()
+    cursor = conn.cursor()
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS pessoa (
+        cpf INTEGER PRIMARY KEY,
+        nome TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        data_nasc DATE NOT NULL,
+        telefone TEXT NOT NULL,
+        senha TEXT NOT NULL,
+        tipo TEXT NOT NULL DEFAULT 'pessoa'
+    )
+    ''')
+    conn.commit()
+    conn.close()
+
+criar_tabela_pessoa()
+
+def criar_tabela_org():
+    conn = conectar_bd()
+    cursor = conn.cursor()
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS org (
+        cnpj INTEGER PRIMARY KEY,
+        nomef TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        area_atuacao TEXT NOT NULL,
+        telefone TEXT NOT NULL,
+        senha TEXT NOT NULL,
+        tipo TEXT NOT NULL DEFAULT 'org'
+    )
+    ''')
+    conn.commit()
+    conn.close()
+
+criar_tabela_org()
 
 
-# Rota para a página inicial (home)
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -17,12 +59,38 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
-        if email == 'paula@example.com' and senha == 'Onda1234':
-            return redirect(url_for('dashboard')) 
-        else:
-            flash('Login ou senha inválidos')
-            return redirect(url_for('login'))
+
+        conn = conectar_bd()
+        cursor = conn.cursor()
+
+        # Verificação de pessoa física
+        cursor.execute('SELECT * FROM pessoa WHERE email = ?', (email,))
+        pessoa = cursor.fetchone()
+
+        if pessoa and check_password_hash(pessoa['senha'], senha):
+            session['usuario'] = pessoa['nome']
+            session['tipo'] = 'pessoa'
+            flash('Login realizado com sucesso!', 'success')
+            return redirect(url_for('dashboard'))
+
+        # Procurando na tabela org
+        cursor.execute('SELECT * FROM org WHERE email = ?', (email,))
+        org = cursor.fetchone()
+
+        conn.close()
+
+        if org and check_password_hash(org['senha'], senha):
+            session['usuario'] = org['nomef']
+            session['tipo'] = 'org' 
+            flash('Login realizado com sucesso!', 'success')
+            return redirect(url_for('dashboard'))
+
+        # Se não encontrou em nenhuma das tabelas
+        flash('Erro no login! Verifique suas credenciais.', 'danger')
+        return redirect(url_for('login'))
+
     return render_template('login.html')
+
 
 # Rota para cadastro de pessoa física
 @app.route('/cadastro_fisica', methods=['GET', 'POST'])
@@ -33,8 +101,18 @@ def cadastro_fisica():
         cpf = request.form['cpf']
         data_nascimento = request.form['data_nascimento']
         telefone = request.form['telefone']
-        senha = request.form['senha']
+        senha = generate_password_hash(request.form['senha'])
 
+        conn = conectar_bd()
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO pessoa (cpf, nome, email, data_nasc, telefone, senha, tipo)
+            VALUES (?, ?, ?, ?, ?, ?, 'pessoa')
+        ''', (cpf, nome, email, data_nascimento, telefone, senha))
+        conn.commit()
+        conn.close()
+
+        flash('Cadastro realizado com sucesso!', 'success')
         return redirect(url_for('login'))
     
     return render_template('cadastro_fisica.html')
@@ -43,26 +121,34 @@ def cadastro_fisica():
 @app.route('/cadastro_juridica', methods=['GET', 'POST'])
 def cadastro_juridica():
     if request.method == 'POST':
-        nome = request.form['nome']
+        nomef = request.form['nome']
         email = request.form['email']
         cnpj = request.form['cnpj']
+        area_atuacao = request.form['area_atuacao']
         telefone = request.form['telefone']
-        endereco = request.form['endereco']
-        senha = request.form['senha']
+        senha = generate_password_hash(request.form['senha'])
 
+        conn = conectar_bd()
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO org (cnpj, nomef, email, area_atuacao, telefone, senha, tipo)
+            VALUES (?, ?, ?, ?, ?, ?, 'org')
+        ''', (cnpj, nomef, email, area_atuacao, telefone, senha))
+        conn.commit()
+        conn.close()
+
+        flash('Cadastro realizado com sucesso!', 'success')
         return redirect(url_for('login'))
     
     return render_template('cadastro_juridica.html')
 
-# Rota para o perfil do usuário
 @app.route('/dashboard')
 def dashboard():
-    user = {
-        'username': 'Paula',
-        'email': 'paula@example.com',
-        'telefone': '123456789'
-    }
-    return render_template('dashboard.html', user=user)
+    if 'usuario' not in session:
+        flash('Por favor, faça login para acessar o dashboard.', 'danger')
+        return redirect(url_for('login'))
+    
+    return render_template('dashboard.html')
 
 # Rota para detalhes de uma área
 @app.route('/detalhes/<int:id_area>')
@@ -103,11 +189,6 @@ def notificacoes():
 
     return render_template('notificacoes.html', notificacoes=notificacoes)
 
-# Rota para logout do usuário
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('login'))  
 
 # Rota sobre o projeto
 @app.route('/sobre')
@@ -124,16 +205,12 @@ def feedbacks():
 def adotar():
     return render_template('adocao.html')  
 
-# Rota para o formulário de login (verificação)
-@app.route('/verificarlogin', methods=['POST'])
-def verificarlogin():
-    usuario = request.form['usuario']
-    senha = request.form['senha']
-    if usuario == 'Paula' and senha == 'Onda1234':
-        return redirect(url_for('dashboard')) 
-    else:
-        flash('Login ou senha inválidos')
-        return redirect(url_for('login'))
+# Rota para logout do usuário
+@app.route('/logout')
+def logout():
+    session.pop('usuario', None)
+    return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
