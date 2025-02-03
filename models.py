@@ -2,7 +2,7 @@ import sqlite3
 from werkzeug.security import generate_password_hash
 
 def conectar_bd():
-    conn = sqlite3.connect('banco.db')
+    conn = sqlite3.connect('usuarios.db')
     conn.row_factory = sqlite3.Row  # Configura para que o resultado seja tratado como dicionário
     return conn
 
