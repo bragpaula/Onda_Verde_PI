@@ -114,10 +114,6 @@ def dashboard():
     return redirect(url_for('login'))
 
 
-# Rota para detalhes de uma área
-@app.route('/detalhes/<int:id_area>')
-def detalhes_area(id_area):
-    return render_template('detalhes.html', id_area=id_area)
 
 # Rota para adotar uma área
 @app.route('/adotar/<int:id_area>')
@@ -153,10 +149,6 @@ def participar_atividade(atividade_id):
 
     return redirect(url_for('dashboard'))
 
-# Rota para visualizar uma área adotada
-@app.route('/visualizar/<int:id_area>')
-def visualizar_area(id_area):
-    return render_template('visualizar.html', id_area=id_area)
 
 # Rota para buscar áreas e atividades
 @app.route('/buscar')
@@ -173,8 +165,33 @@ def notificacoes():
         "Evento de plantio amanhã às 15h no IFRN-zona Norte.",
         "Você foi aceito em uma nova atividade!"
     ]
+
     return render_template('notificacoes.html', notificacoes=notificacoes)
 
+
+@app.route('/areas_disponiveis')
+def areas_disponiveis():
+    return render_template('areas_disponiveis.html')
+
+@app.route('/minhas_areas')
+def minhas_areas():
+    return render_template('minhas_areas.html')
+
+@app.route('/proximas_atividades')
+def proximas_atividades():
+    return render_template('proximas_atividades.html')
+
+@app.route('/relatorios')
+def relatorios():
+    return render_template('relatorios.html')
+
+@app.route('/configuracoes')
+def configuracoes():
+    return render_template('configuracoes.html')
+
+@app.route('/ajuda')
+def ajuda():
+    return render_template('ajuda.html')
 # Rota sobre o projeto
 @app.route('/sobre')
 def sobre():
