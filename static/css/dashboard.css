@@ -10,7 +10,7 @@ body{
 }
 .org-flex{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .org-flex-column{
     display: flex;
@@ -19,7 +19,7 @@ body{
 main{
     display: flex;
     justify-content: center;
-    width: 82vw;
+    width: 80vw;
 }
 main .container{
     margin-top: 40px;
@@ -95,7 +95,7 @@ main .container{
 /* estilização banner */
 
 .banner{
-    width: 880px;
+    width: 60vw;
     height: 285px;
     border-radius: 20px;
     background: linear-gradient(270deg, #435B1D -5.32%, #02381E 106.33%);

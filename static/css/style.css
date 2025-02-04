@@ -85,12 +85,12 @@ h1{
     color: #02381E;
     text-align: center;
     font-family: Poppins;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 300;
-    line-height: 18px; /* 128.571% */
-    width: 740px;
+    width: 780px;
     height: 38px;
+    margin-top: 1%;
 }
 .text{
     display: flex;
@@ -111,7 +111,7 @@ h1{
     align-items: center;
     background-color: #02381E;
 }
-.principal img {
+.principal .img-dashboard {
     margin-top: -400px;
 }
 
@@ -235,4 +235,12 @@ h2{
     line-height: 18px; /* 112.5% */  
     width: 282px;
     text-align: left;
+}
+
+.img-dashboard{
+    width: 80vw;
+    height: 780px;
+    border-radius: 50px;
+    background-image: url(../img/Dashboard.svg);
+    background-position: center;
 }
