@@ -8,9 +8,14 @@ body{
     font-family: Poppins;
     display: flex; 
 }
+.org-flex-icones{
+    display: flex;
+    justify-content: space-between;
+}
 .org-flex{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 76vw;
 }
 .org-flex-column{
     display: flex;
@@ -25,11 +30,12 @@ main .container{
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
 }
 
 .menu a:hover{
     color: #02381E;
+    font-weight: 500;
 }
 .btn:hover{
     box-shadow: 0px 0px 8px #435B1D;
@@ -95,7 +101,7 @@ main .container{
 /* estilização banner */
 
 .banner{
-    width: 60vw;
+    width: 56vw;
     height: 285px;
     border-radius: 20px;
     background: linear-gradient(270deg, #435B1D -5.32%, #02381E 106.33%);
@@ -252,7 +258,7 @@ main .container{
     justify-content: space-between;
 }
 .card-area-verde{
-    width: 380px;
+    padding-right: 2vw;
     height: 100px;
     border-radius: 20px;
     background: #E8DFB3;
@@ -294,18 +300,70 @@ main .container{
     gap: 14px;
 }
 
-/* estilização perto */
-.perto h2{
+/* estilização seu desempenho */
+.desempenho h2{
     color: #02381E;
     font-size: 20px;
     font-weight: 500;
 }
-.perto{
-    width: 580px;
+.desempenho h4{
+    color: #000;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.desempenho .num-desempenho{
+    color: #FFF7CF;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 10px;
+    background: #02381E;
+    width: 38px;
+    height: 17px;
+    flex-shrink: 0;
+}
+.desempenho{
+    width: 488px;
+    height: 191px;
+    border-radius: 20px;
+    border: 2px solid #E8DFB3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.cards-desempenho{
+    height: 115px;
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 14px;
+
+}
+.card-desempenho{
+    width: 220px;
+    height: 29px;
+    border-radius: 10px;
+    background: #E8DFB3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    flex-grow: 1;
 }
 
 /* estilização próximas atividades */
 
+.proximas-atv{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .proximas-atv h2{
     color: #02381E;
     font-size: 20px;
@@ -329,7 +387,6 @@ main .container{
     color: #383838;
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 10px;
 }
 .card-prox p{
     color: #383838;
@@ -337,6 +394,7 @@ main .container{
     font-weight: 300;
     width: 216px;
     text-align: justify;
+    margin-bottom: 3px;
 }
 .card-prox a{
     width: 120px;
@@ -350,4 +408,13 @@ main .container{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.end-datahora{
+    display: flex;
+    gap: 5px;
+}
+.end-datahora p{
+    color: #5F5F5F;
+    font-size: 10px;
+    font-weight: 400;
 }

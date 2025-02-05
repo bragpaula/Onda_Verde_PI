@@ -15,17 +15,8 @@
         <div class="menu">
             <p>menu</p>
             <nav>
-                <a class="clicado" href="{{ url_for('dashboard') }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                        <g clip-path="url(#clip0_262_24)">
-                          <path d="M10.5593 0.659431C10.2685 0.397735 9.89118 0.25293 9.5 0.25293C9.10882 0.25293 8.7315 0.397735 8.44075 0.659431L0 8.25626V16.4896C0 17.1615 0.266904 17.8058 0.741996 18.2809C1.21709 18.756 1.86145 19.0229 2.53333 19.0229H16.4667C17.1385 19.0229 17.7829 18.756 18.258 18.2809C18.7331 17.8058 19 17.1615 19 16.4896V8.25626L10.5593 0.659431ZM11.875 17.4372H7.125V13.4583C7.125 12.8284 7.37522 12.2243 7.82062 11.7789C8.26602 11.3335 8.87011 11.0833 9.5 11.0833C10.1299 11.0833 10.734 11.3335 11.1794 11.7789C11.6248 12.2243 11.875 12.8284 11.875 13.4583V17.4372ZM17.4167 16.4872C17.4167 16.7392 17.3166 16.9808 17.1384 17.159C16.9603 17.3371 16.7186 17.4372 16.4667 17.4372H13.4583V13.4583C13.4583 12.4085 13.0413 11.4017 12.299 10.6593C11.5566 9.91701 10.5498 9.49997 9.5 9.49997C8.45018 9.49997 7.44337 9.91701 6.70104 10.6593C5.9587 11.4017 5.54167 12.4085 5.54167 13.4583V17.4372H2.53333C2.28138 17.4372 2.03974 17.3371 1.86158 17.159C1.68342 16.9808 1.58333 16.7392 1.58333 16.4872V8.96085L9.5 1.83585L17.4167 8.96085V16.4872Z" fill="#02381E"/>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_262_24">
-                            <rect width="19" height="19" fill="white"/>
-                          </clipPath>
-                        </defs>
-                      </svg>
+                <a href="{{ url_for('dashboard') }}">
+                    <img src="../static/img/casa (1) 1.svg" alt="">
                     INÍCIO
                 </a>
                 <a href="{{ url_for('areas_disponiveis') }}">
@@ -141,7 +132,7 @@
                     <img class="arvores" src="../static/img/arvores 1.png" alt="">
                 </div>
                 <div class="org-flex-column">
-                    <div class="org-flex icones-sup">
+                    <div class="org-flex-icones icones-sup">
                         <a class="lupa" href="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M23.7195 22.3067L17.7554 16.3426C19.3807 14.3548 20.1798 11.8184 19.9874 9.25796C19.7951 6.69754 18.6259 4.309 16.7219 2.5864C14.8178 0.863809 12.3245 -0.0610491 9.75763 0.00313002C7.19079 0.0673091 4.74681 1.11562 2.93121 2.93121C1.11562 4.74681 0.0673091 7.19079 0.00313002 9.75763C-0.0610491 12.3245 0.863809 14.8178 2.5864 16.7219C4.309 18.6259 6.69754 19.7951 9.25796 19.9874C11.8184 20.1798 14.3548 19.3807 16.3426 17.7554L22.3067 23.7195C22.4951 23.9015 22.7475 24.0022 23.0095 24C23.2715 23.9977 23.5221 23.8926 23.7073 23.7073C23.8926 23.5221 23.9977 23.2715 24 23.0095C24.0022 22.7475 23.9015 22.4951 23.7195 22.3067ZM10.0238 18.0172C8.44282 18.0172 6.89737 17.5484 5.58286 16.6701C4.26835 15.7917 3.24381 14.5433 2.6388 13.0827C2.0338 11.6221 1.8755 10.0149 2.18393 8.46433C2.49236 6.91376 3.25366 5.48946 4.37156 4.37156C5.48946 3.25366 6.91376 2.49236 8.46433 2.18393C10.0149 1.8755 11.6221 2.0338 13.0827 2.6388C14.5433 3.24381 15.7917 4.26835 16.6701 5.58286C17.5484 6.89737 18.0172 8.44282 18.0172 10.0238C18.0148 12.143 17.1719 14.1748 15.6734 15.6734C14.1748 17.1719 12.143 18.0148 10.0238 18.0172Z" fill="#02381E"/>
@@ -241,20 +232,49 @@
                 </div>
             </div><!-- areas verdes -->
             <div class="org-flex">
-                <div class="perto">
-                     <h2>Perto de você!</h2>
-                     <img src="../static/img/image (5).png" alt="">
+                <div class="desempenho">
+                  <h2>Seu desempenho</h2>
+                  <div class="cards-desempenho">
+                    <div class="card-desempenho">
+                      <h4>Áreas verdes adotadas:</h4>
+                      <p class="num-desempenho">03</p>
+                    </div>
+                    <div class="card-desempenho">
+                      <h4>Criação de atividades</h4>
+                      <p class="num-desempenho">02</p>
+                    </div>
+                    <div class="card-desempenho">
+                      <h4>Cadastro de áreas verdes:</h4>
+                      <p class="num-desempenho">03</p>
+                    </div>
+                    <div class="card-desempenho">
+                      <h4>Participação em atividades:</h4>
+                      <p class="num-desempenho">05</p>
+                    </div>
+                    <div class="card-desempenho">
+                      <h4>Horas de trabalho voluntário:</h4>
+                      <p class="num-desempenho">22h</p>
+                    </div>
+                  </div>
                 </div>
                 <div class="proximas-atv">
                     <h2>Próximas atividades</h2>
                     <div class="grupo-cards">
                         <div class="card-prox">
-                            <img src="../static/img/image (3).png" alt="">
+                            <img src="../static/img/Texto do seu parágrafo.png" alt="">
                             <div class="texto-card-prox">
                                 <h3>Plantio de Árvores</h3>
                                 <p>
                                     Às 16h30 na praça Dom Casmurro acontecerá mais uma edição da nossa doação de mudas, participe!! 
                                 </p>
+                                <div class="end-datahora">
+                                  <img src="../static/img/marcador-de-mapa (1) 1.svg" alt="">
+                                  <p class="sub">Rua dias sales, 113 - Pajuçara, Natal</p>
+                                </div>
+                                <div class="end-datahora">
+                                  <img src="../static/img/relogio-calendario 2.svg" alt="">
+                                  <p class="sub">22 de fevereiro, ás 16h30</p>
+                                </div>
                             </div>
                             <a class="btn" href="{{ url_for('participar_atividade', atividade_id=1) }}">Participe</a>
                         </div><!-- card prox -->
