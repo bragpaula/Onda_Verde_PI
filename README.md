@@ -26,9 +26,8 @@ Com uma interface intuitiva e funcionalidades avançadas, o projeto visa fomenta
 ## 🛠️ Tecnologias Utilizadas  
 
 - **Backend:** Python (Flask)  
-- **Frontend:** HTML, CSS, JavaScript (com suporte para frameworks como Bootstrap)  
-- **Banco de Dados:** PostgreSQL ou MySQL  
-- **Mapa Interativo:** Integração com API do Google Maps  
+- **Frontend:** HTML, CSS, JavaScript
+- **Banco de Dados:**  SQLite  
 - **Versionamento:** GitHub  
 
 ---
@@ -39,8 +38,7 @@ Com uma interface intuitiva e funcionalidades avançadas, o projeto visa fomenta
 2. **Catálogo de Áreas Verdes**: Listagem interativa de áreas disponíveis para adoção.  
 3. **Adoção de Áreas Verdes**: Visualização de detalhes e status das áreas.  
 4. **Gerenciamento de Atividades**: Organização de eventos como mutirões de plantio ou limpeza.  
-5. **Mapa Interativo**: Exibição dinâmica de áreas adotadas e disponíveis.  
-6. **Relatórios de Impacto Ambiental**: Gerados automaticamente ou com base em formulários.  
+6. **Mostrador de Desempenho**: Gerados automaticamente com base nas atividades dentro da aplicação.  
 7. **Calendário de Eventos**: Visualização e inscrição em eventos comunitários.  
 8. **Notificações Push**: Informações sobre eventos ou atividades programadas.  
 
@@ -57,7 +55,7 @@ Com uma interface intuitiva e funcionalidades avançadas, o projeto visa fomenta
 
 2. Instale as dependências:  
    ```bash  
-   pip install -r requirements.txt  
+   pip install flask werkzeug
    ```  
 
 3. Execute o servidor local:  
@@ -77,7 +75,8 @@ Com uma interface intuitiva e funcionalidades avançadas, o projeto visa fomenta
 - **app/**: Código-fonte principal (rotas, templates e lógica de negócio).  
 - **static/**: Arquivos estáticos (CSS, JavaScript, imagens).  
 - **templates/**: Templates HTML para a interface do usuário.  
-- **requirements.txt**: Dependências do projeto.  
+- **models**: Manipulação do banco de dados.
+- **usuarios**: Banco de dados (SQLite).  
 
 ---
 
