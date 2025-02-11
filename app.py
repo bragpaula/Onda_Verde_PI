@@ -77,12 +77,12 @@ def cadastro_fisica():
 @app.route('/cadastro_juridica', methods=['GET', 'POST'])
 def cadastro_juridica():
     if request.method == 'POST':
-        nomef = request.form['nome']
-        email = request.form['email']
-        cnpj = request.form['cnpj']
-        area_atuacao = request.form['area_atuacao']
-        telefone = request.form['telefone']
-        senha = generate_password_hash(request.form['senha'])
+        nomef = request.form.get('nomef')
+        email = request.form.get('email')
+        cnpj = request.form.get('cnpj')
+        area_atuacao = request.form.get('area_atuacao')
+        telefone = request.form.get('telefone')
+        senha = generate_password_hash(request.form.get('senha'))
 
         try:
             models.cadastrar_org(nomef, email, cnpj, area_atuacao, telefone, senha)
@@ -93,6 +93,7 @@ def cadastro_juridica():
         return redirect(url_for('login'))
 
     return render_template('cadastro_juridica.html')
+
 
 
 @app.route('/dashboard')
@@ -116,28 +117,30 @@ def dashboard():
 
 
 # Rota para adotar uma área
-@app.route('/adotar/<int:id_area>')
+@app.route('/adotar/<int:id_area>', methods=['GET', 'POST'])
 def adotar_area(id_area):
     if 'usuario_id' not in session:
         flash('Por favor, faça login para adotar uma área.', 'danger')
-        return redirect(url_for('login'))
+        return redirect(url_for('dashboard'))  
     
     usuario_id = session['usuario_id']
-    
-    try:
-        adotar_area_bd(usuario_id, id_area)  # Função do database.py
-        flash(f'Você adotou a área com sucesso!', 'success')
-    except Exception as e:
-        flash('Erro ao adotar a área. Tente novamente.', 'danger')
+
+    if request.method == 'POST':
+        try:
+            adotar_area_bd(usuario_id, id_area)  # Função do database.py
+            flash(f'Você adotou a área com sucesso!', 'success')
+        except Exception as e:
+            flash('Erro ao adotar a área. Tente novamente.', 'danger')
 
     return redirect(url_for('dashboard'))
+
 
 # Rota para participar de uma atividade
 @app.route('/participar/<int:atividade_id>')
 def participar_atividade(atividade_id):
     if 'usuario_id' not in session:
         flash('Por favor, faça login para participar de uma atividade.', 'danger')
-        return redirect(url_for('login'))
+        return redirect(url_for('proximas_atividades'))
     
     usuario_id = session['usuario_id']
 
