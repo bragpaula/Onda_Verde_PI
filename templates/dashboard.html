@@ -258,7 +258,10 @@
                   </div>
                 </div>
                 <div class="proximas-atv">
-                    <h2>Próximas atividades</h2>
+                    <div class="prox-flex">
+                      <h2>Próximas atividades</h2>
+                      <img class="btn-prox-atv" id="btnCadastrarAtiv" src="../static/img/Group 15.svg" alt="">
+                    </div>
                     <div class="grupo-cards">
                         <div class="card-prox">
                             <img src="../static/img/Texto do seu parágrafo.png" alt="">
@@ -283,5 +286,65 @@
             </div><!-- org-flex -->
         </div><!--container-->
     </main>
-</body>
+    <!-- Modal -->
+    <div id="activityModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Cadastrar nova atividade</h2>
+        <form id="activityForm">
+          
+          <div class="form-group">
+            <label for="title">Título da Atividade</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              placeholder="Ex: Plantio de Árvores" 
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Descrição</label>
+            <textarea 
+              id="description" 
+              name="description" 
+              placeholder="Ex: Plantio de árvores nativas..." 
+              required>
+            </textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Endereço</label>
+            <input 
+              type="text" 
+              id="address" 
+              name="address" 
+              placeholder="Ex: Rua Dias Gilvanno Sales, 113 - Pajuçara, Natal" 
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Data</label>
+            <input 
+              type="date" 
+              id="date" 
+              name="date" 
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="time">Hora</label>
+            <input 
+              type="time" 
+              id="time" 
+              name="time" 
+              required>
+          </div>
+
+          <button type="submit" class="participar-btn">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+    <script src="../static/js/script.js"></script>
+  </body>
 </html>

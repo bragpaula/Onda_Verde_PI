@@ -418,3 +418,98 @@ main .container{
     font-size: 10px;
     font-weight: 400;
 }
+.prox-flex{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+.btn-prox-atv{
+    cursor: pointer;
+}
+
+
+/* Modal (overlay) */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 999; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Fundo escurecido */
+  }
+  
+  /* Conteúdo do modal */
+  .modal-content {
+    background-color: #E8DFB3;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  /* Botão (X) de fechar */
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary-color);
+  }
+  
+  .close-btn:hover {
+    color: #000;
+  }
+  
+  /* Título do modal */
+  .modal-content h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  /* Grupos de formulário */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  /* Botão de enviar (Participar/Cadastrar) */
+  .participar-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .participar-btn:hover {
+    background-color: #2B5B4D;
+  }
