@@ -1,10 +1,7 @@
-// Pega o modal
 var modal = document.getElementById("activityModal");
 
-// Pega o botão que abre o modal
 var openModalBtn = document.getElementById("btnCadastrarAtiv");
 
-// Pega o botão de fechar (X)
 var closeBtn = document.getElementsByClassName("close-btn")[0];
 
 // Quando o usuário clicar no botão "Cadastrar Nova Atividade", abre o modal
@@ -34,8 +31,8 @@ document.getElementById("activityForm").onsubmit = function(event) {
   var date = document.getElementById("date").value;
   var time = document.getElementById("time").value;
 
-  // Aqui você pode enviar os dados para o backend (via fetch/axios ou formulário normal)
-  console.log("Nova Atividade:", {
+  // Envio de dados para o backend
+  console.log("Nova atividade:", {
     title: title,
     description: description,
     address: address,
@@ -45,7 +42,4 @@ document.getElementById("activityForm").onsubmit = function(event) {
   
   // Fecha o modal após submeter
   modal.style.display = "none";
-  
-  // Opcional: limpar o formulário
-  document.getElementById("activityForm").reset();
 };

@@ -286,6 +286,7 @@
             </div><!-- org-flex -->
         </div><!--container-->
     </main>
+    
     <!-- Modal -->
     <div id="activityModal" class="modal">
       <div class="modal-content">
@@ -294,7 +295,7 @@
         <form id="activityForm">
           
           <div class="form-group">
-            <label for="title">Título da Atividade</label>
+            <label for="title">Título da atividade</label>
             <input 
               type="text" 
               id="title" 
@@ -306,42 +307,33 @@
           <div class="form-group">
             <label for="description">Descrição</label>
             <textarea 
-              id="description" 
-              name="description" 
-              placeholder="Ex: Plantio de árvores nativas..." 
-              required>
+              id="description" name="description" placeholder="Ex: Plantio de árvores nativas..." required>
             </textarea>
           </div>
 
           <div class="form-group">
             <label for="address">Endereço</label>
             <input 
-              type="text" 
-              id="address" 
-              name="address" 
-              placeholder="Ex: Rua Dias Gilvanno Sales, 113 - Pajuçara, Natal" 
-              required>
+              type="text" id="address" name="address" placeholder="Ex: Rua, 123 - Bairro, Natal" required>
           </div>
 
-          <div class="form-group">
-            <label for="date">Data</label>
-            <input 
-              type="date" 
-              id="date" 
-              name="date" 
-              required>
+          <div class="flex-form-group">
+            
+            <div class="form-group">
+              <label for="date">Data</label>
+              <input 
+                type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+              <label for="time">Hora</label>
+              <input 
+                type="time" id="time" name="time" required>
+            </div>
+
           </div>
 
-          <div class="form-group">
-            <label for="time">Hora</label>
-            <input 
-              type="time" 
-              id="time" 
-              name="time" 
-              required>
-          </div>
-
-          <button type="submit" class="participar-btn">Cadastrar</button>
+          <button type="submit" class="cadastrar-btn">Cadastrar</button>
         </form>
       </div>
     </div>
