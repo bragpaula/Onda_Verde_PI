@@ -16,6 +16,7 @@ h1{
     align-items: center;
     justify-content: center;
     gap: 10px;
+    cursor: pointer;
 }
 .grupo-topo{
     display: flex;

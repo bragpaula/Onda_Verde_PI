@@ -129,10 +129,10 @@
         <div class="right-group">
           <div class="grupo-topo">
             <h1>Próximas atividades</h1>
-            <a class="adicionar-atv" id="btnCadastrarAtiv" href="">
+            <button class="adicionar-atv" id="btnCadastrarAtiv" href="">
                 Adicionar
                 <img src="../static/img/Group 21.svg" alt="">
-            </a>
+            </button>
           </div>
           <div class="grupo-atividades">
             <div class="card-atividade">
@@ -284,6 +284,56 @@
           </div>
         </div>
     </main>
+    <!-- Modal -->
+    <div id="activityModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Cadastrar nova atividade</h2>
+        <form id="activityForm">
+          
+          <div class="form-group">
+            <label for="title">Título da atividade:</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              placeholder="Ex: Plantio de Árvores" 
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Descrição:</label>
+            <textarea 
+              id="description" name="description" placeholder="Ex: Plantio de árvores nativas..." required>
+            </textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Endereço:</label>
+            <input 
+              type="text" id="address" name="address" placeholder="Ex: Rua, 123 - Bairro, Natal" required>
+          </div>
+
+          <div class="flex-form-group">
+            
+            <div class="form-group">
+              <label for="date">Data:</label>
+              <input 
+                type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+              <label for="time">Hora:</label>
+              <input 
+                type="time" id="time" name="time" required>
+            </div>
+
+          </div>
+
+          <button type="submit" class="cadastrar-btn">Cadastrar</button>
+        </form>
+      </div>
+    </div>
     <script src="../static/js/script.js"></script>
 </body>
 </html>
