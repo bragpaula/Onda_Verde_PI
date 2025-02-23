@@ -1,0 +1,153 @@
+h1{
+    color: #02381E;
+    font-size: 32px;
+    font-weight: 600;
+}
+.adicionar-atv{
+    color: #FFF7CF;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    width: 158px;
+    height: 49px;
+    border-radius: 30px;
+    background: #435B1D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.grupo-topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-atividade h2{
+    color: #02381E;
+    font-size: 24px;
+    font-weight: 600;
+}
+.card-atividade p{
+    color: #383838;
+    text-align: justify;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 18px; /* 138.462% */
+}
+.card-atividade .infos h4{
+    color: #5F5F5F;
+    font-size: 11px;
+    font-weight: 400;
+}
+.card-atividade .btn-participar{
+    padding: 7px 33px;
+    border-radius: 10px;
+    background: #02381E;
+    color: #FFF7CF;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btn-participar:hover{
+    background-color: #0c1202;
+}
+.card-atividade{
+    display: flex;
+    gap: 22px;
+    align-items: flex-end;
+    border-radius: 20px;
+    background: #E8DFB3;
+    box-shadow: 0px 2px 4px 0px #E8DFB3;
+    padding: 18px;
+}
+.card-atividade .card-paragrafo{
+    width: 345px;
+}
+.card-atividade .card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.end-loc{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.card-atividade .infos{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.grupo-atividades{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.right-group{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.desempenho-atvs{
+    width: 287px;
+    height: 339px;
+    border-radius: 20px;
+    border: 2px solid #E8DFB3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 45px
+}
+.desempenho-atvs .num-desempenho{
+    border-radius: 10px;
+    background: #02381E;
+    padding: 2px 8px 0;
+    color: #FFF7CF;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+}
+.desempenho-atvs h2{
+    color: #02381E;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 20px;
+}
+.desempenho-atvs h4{
+    color: #000;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.desempenho-atvs .cards-desempenho-atvs{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 15px;
+}
+.desempenho-atvs .cards-desempenho-atvs .card-desempenho-atvs{
+    padding: 0 10px;
+    width: 90%;
+    height: 29px;
+    border-radius: 10px;
+    background: #E8DFB3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left-group{
+    display: flex;
+    flex-direction: column;
+}
+.pag-prox-atv{
+    display: flex;
+    gap: 33px;
+    align-items: center;
+}
