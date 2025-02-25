@@ -103,6 +103,12 @@ def create_app():
             return redirect(url_for('auth.login'))
 
         return render_template('cadastro_juridica.html')
+    
+    # Nosso CRUD
+    @app.route('/proximas_atividades')
+    def proximas_atividades():
+        return render_template('proximas_atividades.html')
+
 
     # Rotas adicionais
     @app.route('/areas_disponiveis')
@@ -112,10 +118,6 @@ def create_app():
     @app.route('/minhas_areas')
     def minhas_areas():
         return render_template('minhas_areas.html')
-
-    @app.route('/proximas_atividades')
-    def proximas_atividades():
-        return render_template('proximas_atividades.html')
 
     @app.route('/relatorios')
     def relatorios():
