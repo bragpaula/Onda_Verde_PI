@@ -154,11 +154,11 @@ def create_app():
             atividade.descricao = request.form['descricao']
             atividade.endereco = request.form['endereco']
             
-            # Converte a string de data para um objeto date
+            # Converte a string de data para date
             data_str = request.form['data']
             atividade.data = datetime.strptime(data_str, '%Y-%m-%d').date()
             
-            # Converte a string de hora para um objeto time
+            # Converte a string de hora para time
             hora_str = request.form['hora']
             atividade.hora = datetime.strptime(hora_str, '%H:%M:%S').time()
             
@@ -185,14 +185,24 @@ def create_app():
         atividades = Atividade.query.all()
         return render_template('proximas_atividades.html', atividades=atividades, pessoa=pessoa)
 
+
     @app.route('/atividade/participar/<int:id>', methods=['POST'])
+    @login_required
     def participar_atividade(id):
-        usuario_id = 1  # Aqui você usa o ID do usuário logado
         atividade = Atividade.query.get_or_404(id)
-        participacao = Participacao(usuario_id=usuario_id, atividade_id=atividade.id)
+        
+        # Verifica se o usuário já está participando
+        if Participacao.query.filter_by(usuario_id=current_user.id, atividade_id=atividade.id).first():
+            flash("Você já está participando dessa atividade!", "warning")
+            return redirect(url_for('home_atividades'))
+        
+        participacao = Participacao(usuario_id=current_user.id, atividade_id=atividade.id)
         db.session.add(participacao)
         db.session.commit()
+        
+        flash("Inscrição na atividade realizada com sucesso!", "success")
         return redirect(url_for('home_atividades'))
+
     
     @app.route('/atividade/cancelar_participacao/<int:id>', methods=['POST'])
     def cancelar_participacao(id):

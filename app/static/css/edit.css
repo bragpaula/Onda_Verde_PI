@@ -1,5 +1,11 @@
 body{
-    background: rgba(67, 91, 29, 0.56);
+    background: #435B1D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    font-family: Poppins;
+
 }
 .container{
     border-radius: 20px;
@@ -7,4 +13,119 @@ body{
     width: 560px;
     height: 580px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+/* Modal (overlay) */
+.body {
+    display: none; 
+    position: fixed;
+    z-index: 999; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Fundo escurecido */
+}
+  
+/* Conteúdo do modal */
+.modal-content {
+    margin: 5% auto; 
+    width: 90%;
+    max-width: 560px;
+    padding: 40px 0;
+    border-radius: 20px;
+    background: #FFF7CF;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(67, 91, 29, 0.56);
+}
+.close-btn:hover {
+    color: #000;
+}
+  
+/* Título do modal */
+h1{
+    margin-bottom: 30px;
+    color: #02381E;
+    font-size: 24px;
+    font-weight: 600;
+}
+  
+/* Grupos de formulário */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+.form-group label {
+    color: #02381E;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px; /* 112.5% */
+}
+
+.form-group input{
+    width: 380px;
+    padding-left: 5px;
+    height: 44px;
+    border-radius: 4px;
+    border: 1px solid #435B1D;
+    background: #FFFCEC;
+    font-size: 14px;
+}
+
+#data, #hora{
+    width: 160px;
+    height: 44px;    
+}
+
+.flex-form-group{
+    display: flex;
+    gap: 60px;
+}
+
+.form-group textarea {
+    border-radius: 4px;
+    border: 1px solid #435B1D;
+    background: #FFFCEC;
+    width: 380px;
+    padding-left: 5px;
+    padding-top: 5px;
+    height: 70px;
+}
+  
+.cadastrar-btn {
+    width: 388px;
+    height: 40px;
+    border-radius: 6px;
+    background: #02381E;
+    color: #FFF7CF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px; /* 112.5% */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+  
+.cadastrar-btn:hover {
+    background-color: #012111;
 }
