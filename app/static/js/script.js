@@ -33,7 +33,7 @@ window.onclick = function (event) {
   }
 };
 
-// Lógica de envio do formulário
+// Lógica de envio do formulário com AJAX
 if (form) {
   form.onsubmit = function (event) {
     event.preventDefault();
@@ -44,16 +44,35 @@ if (form) {
     var date = document.getElementById("date").value;
     var time = document.getElementById("time").value;
 
-    // Envio de dados para o backend (simulação)
-    console.log("Nova atividade:", {
-      title: title,
-      description: description,
-      address: address,
-      date: date,
-      time: time
-    });
+    // Preparando os dados para enviar via AJAX
+    var data = new FormData();
+    data.append("title", title);
+    data.append("description", description);
+    data.append("address", address);
+    data.append("date", date);
+    data.append("time", time);
 
-    // Fecha o modal após submeter
-    modal.style.display = "none";
+    // Envio de dados para o backend usando Fetch (AJAX)
+    fetch("/atividade/new", {
+      method: "POST",
+      body: data
+    })
+      .then(response => response.json())  // Recebe a resposta do servidor
+      .then(data => {
+        if (data.success) {
+          alert("Atividade cadastrada com sucesso!");
+          modal.style.display = "none";  // Fecha o modal
+          location.reload();  // Recarrega a página para mostrar a nova atividade
+        } else {
+          alert("Erro ao cadastrar a atividade.");
+        }
+      })
+      .catch(error => {
+        console.error("Erro:", error);
+        alert("Ocorreu um erro ao tentar cadastrar a atividade.");
+      });
   };
 }
+
+
+

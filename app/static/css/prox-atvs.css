@@ -48,14 +48,14 @@ h1{
     font-size: 18px;
     font-weight: 600;
     text-decoration: none;
+    margin-bottom: 5px;
 }
 .btn-participar:hover{
-    background-color: #0c1202;
+    background-color: #172304;
 }
 .card-atividade{
     display: flex;
     gap: 22px;
-    align-items: flex-end;
     border-radius: 20px;
     background: #E8DFB3;
     box-shadow: 0px 2px 4px 0px #E8DFB3;
@@ -63,11 +63,15 @@ h1{
 }
 .card-atividade .card-paragrafo{
     width: 345px;
+    align-self: flex-start;
 }
 .card-atividade .card-content{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: 153px;
+    justify-content: space-between;
+    width: 320px;
 }
 .end-loc{
     display: flex;
@@ -78,6 +82,7 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 5px;
+    justify-content: flex-end;
 }
 .grupo-atividades{
     display: flex;
@@ -85,6 +90,7 @@ h1{
     gap: 18px;
 }
 .right-group{
+    width: 820px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -150,5 +156,55 @@ h1{
 .pag-prox-atv{
     display: flex;
     gap: 33px;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 45px;
+}
+.grupo-botoes .btn-delete{
+    color: #FFF7CF;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 70px;
+    height: 21px;
+    border-radius: 5px;
+    background: #FC3131;
+    border: none;
+    cursor: pointer;
+}
+.grupo-botoes .btn-delete:hover{
+    background-color: #b11818;
+}
+.grupo-botoes .btn-editar{
+    width: 70px;
+    height: 21px;
+    border-radius: 5px;
+    background-color: #435B1D;
+    color: #FFF7CF;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.grupo-botoes .btn-editar:hover{
+    background-color: #394c19;
+}
+.grupo-botoes{
+    display: flex;
+    max-width: 160px;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: space-around;
+    align-self: flex-end;
+}
+.grupo-botoes form{
+    display: flex;
+}
+.sidebar{
+    position: fixed;
+}
+.lateral{
+    width: 18vw;
 }

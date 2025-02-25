@@ -1,0 +1,10 @@
+body{
+    background: rgba(67, 91, 29, 0.56);
+}
+.container{
+    border-radius: 20px;
+    background: #FFF7CF;
+    width: 560px;
+    height: 580px;
+    flex-shrink: 0;
+}

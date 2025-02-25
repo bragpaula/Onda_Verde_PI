@@ -1,12 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from utils import db
 from utils import lm
 from flask_migrate import Migrate
 from app.models.usuarios import Pessoa
 from app.models.usuarios import Org
 from app.blueprints.auth import auth
+from app.models.atividades import Atividade
+from app.models.atividades import Participacao
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime, date, time
 import os
 
 
@@ -18,7 +21,6 @@ def create_app():
 
     db.init_app(app)
 
-    # Instanciando o Migrate corretamente antes de usá-lo
     migrate = Migrate(app, db)
 
     # Inicializando o LoginManager
@@ -104,10 +106,102 @@ def create_app():
 
         return render_template('cadastro_juridica.html')
     
+
     # Nosso CRUD
-    @app.route('/proximas_atividades')
-    def proximas_atividades():
-        return render_template('proximas_atividades.html')
+
+    @app.route('/atividade/new', methods=['POST'])
+    def new_atividade():
+        if request.method == 'POST':
+            titulo = request.form['title']
+            descricao = request.form['description']
+            endereco = request.form['address']
+            data_str = request.form['date']
+            hora_str = request.form['time']
+            
+            # Converte data e hora
+            data = datetime.strptime(data_str, '%Y-%m-%d').date() if data_str else None
+            hora = datetime.strptime(hora_str, '%H:%M').time() if hora_str else None
+            
+            # Cria uma nova atividade
+            atividade = Atividade(
+                titulo=titulo,
+                descricao=descricao,
+                endereco=endereco,
+                data=data,
+                hora=hora,
+                user_id=current_user.id
+            )
+            
+            # Adiciona a atividade ao banco de dados
+            db.session.add(atividade)
+            db.session.commit()
+            
+            # Retorna uma resposta JSON
+            return jsonify({'success': True, 'message': 'Atividade cadastrada com sucesso!'})
+
+        return jsonify({'success': False, 'message': 'Método inválido'}), 400
+    
+
+    @app.route('/atividade/edit/<int:id>', methods=['GET', 'POST'])
+    def edit_atividade(id):
+        atividade = Atividade.query.get_or_404(id)
+        
+        if atividade.user_id != current_user.id:
+            return redirect(url_for('home_atividades'))  # Redireciona se o usuário não for o dono da atividade
+        
+        if request.method == 'POST':
+            atividade.titulo = request.form['titulo']
+            atividade.descricao = request.form['descricao']
+            atividade.endereco = request.form['endereco']
+            
+            # Converte a string de data para um objeto date
+            data_str = request.form['data']
+            atividade.data = datetime.strptime(data_str, '%Y-%m-%d').date()
+            
+            # Converte a string de hora para um objeto time
+            hora_str = request.form['hora']
+            atividade.hora = datetime.strptime(hora_str, '%H:%M:%S').time()
+            
+            db.session.commit()
+            return redirect(url_for('home_atividades'))
+        
+        return render_template('edit_atividade.html', atividade=atividade)
+    
+    @app.route('/atividade/delete/<int:id>', methods=['POST'])
+    def delete_atividade(id):
+        atividade = Atividade.query.get_or_404(id)
+        
+        if atividade.user_id != current_user.id:
+            return redirect(url_for('home_atividades'))  # Redireciona se o usuário não for o dono da atividade
+        
+        db.session.delete(atividade)
+        db.session.commit()
+        return redirect(url_for('home_atividades'))
+
+    
+    @app.route('/atividades')
+    def home_atividades():
+        pessoa = Pessoa.query.filter_by(email=current_user.email).first()
+        atividades = Atividade.query.all()
+        return render_template('proximas_atividades.html', atividades=atividades, pessoa=pessoa)
+
+    @app.route('/atividade/participar/<int:id>', methods=['POST'])
+    def participar_atividade(id):
+        usuario_id = 1  # Aqui você usa o ID do usuário logado
+        atividade = Atividade.query.get_or_404(id)
+        participacao = Participacao(usuario_id=usuario_id, atividade_id=atividade.id)
+        db.session.add(participacao)
+        db.session.commit()
+        return redirect(url_for('home_atividades'))
+    
+    @app.route('/atividade/cancelar_participacao/<int:id>', methods=['POST'])
+    def cancelar_participacao(id):
+        usuario_id = 1  # ID do usuário logado
+        participacao = Participacao.query.filter_by(usuario_id=usuario_id, atividade_id=id).first()
+        if participacao:
+            db.session.delete(participacao)
+            db.session.commit()
+        return redirect(url_for('home_atividades'))
 
 
     # Rotas adicionais
